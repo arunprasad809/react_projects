@@ -68,3 +68,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- Dependencies -->
+
+Node version 22.13.0 (Latest)
+
+React Bootstrap (https://react-bootstrap.netlify.app/docs/getting-started/introduction)
+npm install react-bootstrap bootstrap
+
+Sass (https://sass-lang.com/install/)
+npm install -g sass
+
+React Router (https://reactrouter.com/start/data/installation)
+npm i react-router
+
+<!-- Steps -->
+
+1. Run the following command first to get the data for To-Do List.
+   npx json-server -p 3500 -w data/db.json
+
+2. Run the following to start the application.
+   npm start

@@ -1,0 +1,13 @@
+.form-comp {
+  .input-group {
+    label {
+      min-width: 100px;
+      text-align: left;
+      margin: 5px 1rem 0px 0px;
+    }
+    input {
+      border-top-left-radius: 0.375rem !important;
+      border-bottom-left-radius: 0.375rem !important;
+    }
+  }
+}

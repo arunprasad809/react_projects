@@ -1,0 +1,16 @@
+.routing_data {
+  text-align: left;
+
+  button {
+    border-radius: 0;
+
+    &.active {
+      border-bottom-color: #4d5154;
+    }
+  }
+  tr > th {
+    background-color: #4d5154;
+    letter-spacing: 1px;
+    font-size: 14px;
+  }
+}
