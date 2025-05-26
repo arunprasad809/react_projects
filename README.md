@@ -82,6 +82,12 @@ npm install -g sass
 React Router (https://reactrouter.com/start/data/installation)
 npm i react-router
 
+Axios (https://www.npmjs.com/package/axios)
+npm i axios
+
+Fa Icons (https://react-icons.github.io/react-icons/)
+npm install react-icons --save
+
 <!-- Steps -->
 
 1. Run the following command first to get the data for To-Do List.
