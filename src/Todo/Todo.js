@@ -6,6 +6,7 @@ import AddListItem from "./AddListItem";
 import SearchItem from "./SearchItem";
 import api from "../api/data";
 import { Row, Col } from "react-bootstrap";
+import { FaRedo, FaTrash } from "react-icons/fa";
 
 function Todo() {
   const [fetchItemsError, setFetchItemsError] = useState(null);
@@ -179,6 +180,9 @@ function Todo() {
   const getConfirmation = () => {
     return window.confirm("Are you sure? This cannot be restored!");
   };
+  const getRestoreConfirmation = () => {
+    return window.confirm("Are you sure to Restore all the items?");
+  };
   const permanentlyDelete = async (id) => {
     const confirmation = getConfirmation();
     if (confirmation) {
@@ -195,25 +199,28 @@ function Todo() {
   };
   const [searchItem, setSearchItem] = useState("");
   const restoreAll = async () => {
-    const newTodoItems = [...todoItems, ...deletedItems];
-    setTodoItems(newTodoItems);
-    setDeletedItems([]);
+    const confirmation = getRestoreConfirmation();
+    if (confirmation) {
+      const newTodoItems = [...todoItems, ...deletedItems];
+      setTodoItems(newTodoItems);
+      setDeletedItems([]);
 
-    for (let i = 0; i < deletedItems.length; i++) {
-      try {
-        await api.post("/items", deletedItems[i]);
-      } catch (err) {
-        setFetchItemsError(
-          `While adding - restore all (${i} item), ${err.message}`
-        );
-      }
-      let id = deletedItems[i].id;
-      try {
-        await api.delete(`/deleted_items/${id}`);
-      } catch (err) {
-        setFetchItemsError(
-          `While removing - restore all (${i} item), ${err.message}`
-        );
+      for (let i = 0; i < deletedItems.length; i++) {
+        try {
+          await api.post("/items", deletedItems[i]);
+        } catch (err) {
+          setFetchItemsError(
+            `While adding - restore all (${i} item), ${err.message}`
+          );
+        }
+        let id = deletedItems[i].id;
+        try {
+          await api.delete(`/deleted_items/${id}`);
+        } catch (err) {
+          setFetchItemsError(
+            `While removing - restore all (${i} item), ${err.message}`
+          );
+        }
       }
     }
   };
@@ -285,18 +292,36 @@ function Todo() {
               <h4>
                 Deleted List:
                 <span
-                  className="greenColor"
+                  className="greenColor d-none d-md-inline-block"
                   role="button"
                   onClick={() => restoreAll()}
                 >
                   Restore all
                 </span>
                 <span
-                  className="redColor"
+                  className="greenColor d-inline-block d-md-none inverted"
+                  title="Restore all"
+                  role="button"
+                  onClick={() => restoreAll()}
+                  style={{ fontSize: "18px" }}
+                >
+                  <FaRedo />
+                </span>
+                <span
+                  className="redColor d-none d-md-inline-block"
                   role="button"
                   onClick={() => clearAll()}
                 >
                   Clear all
+                </span>
+                <span
+                  className="redColor d-inline-block d-md-none inverted"
+                  title="Clear all"
+                  role="button"
+                  onClick={() => clearAll()}
+                  style={{ fontSize: "18px" }}
+                >
+                  <FaTrash />
                 </span>
               </h4>
               <DeletedListItems

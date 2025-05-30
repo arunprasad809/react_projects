@@ -15,6 +15,9 @@
     float: left;
     width: 100%;
   }
+  .inverted {
+    transform: scaleX(-1);
+  }
   ul.todo-list {
     list-style: none;
     padding: 0;
@@ -56,9 +59,6 @@
         font-size: 20px;
         line-height: 1.8;
 
-        &.inverted {
-          transform: scaleX(-1);
-        }
         &:hover {
           color: #f5f5f5;
         }
