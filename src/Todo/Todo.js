@@ -5,6 +5,7 @@ import DeletedListItems from "./DeletedListItems";
 import AddListItem from "./AddListItem";
 import SearchItem from "./SearchItem";
 import api from "../api/data";
+import { Row, Col } from "react-bootstrap";
 
 function Todo() {
   const [fetchItemsError, setFetchItemsError] = useState(null);
@@ -235,24 +236,24 @@ function Todo() {
   return (
     <div className="container">
       <h1 className="title">Todo List</h1>
-      <div className="row">
-        <div className="col">
-          <div className="line add-item mb-3">
+      <Row>
+        <Col md>
+          <div className="line add-item">
             <AddListItem
               newItem={newItem}
               setNewItem={setNewItem}
               handleAddItem={handleAddItem}
             />
           </div>
-        </div>
-        <div className="col">
+        </Col>
+        <Col md>
           <div className="search-item">
             <SearchItem searchItem={searchItem} setSearchItem={setSearchItem} />
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
       <div className="todo">
-        <div className="line main-list mb-3">
+        <div className="line main-list mt-3 mb-3">
           <h4>To-Do List:</h4>
           {isItemsLoading && <p>Fetching To-Do items...</p>}
           {fetchItemsError && <p>{`Error: ${fetchItemsError}`}</p>}
