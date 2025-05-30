@@ -38,7 +38,7 @@ body {
     position: fixed;
     width: 100%;
     color: #fff;
-    z-index: 3;
+    z-index: 6;
   }
 
   .header {
@@ -70,13 +70,13 @@ body {
       position: fixed;
       top: 1.5px;
       right: 1px;
-      z-index: 5;
+      z-index: 8;
     }
     #nav-items {
       position: fixed;
       top: 0px;
       right: 0;
-      z-index: 4;
+      z-index: 7;
       width: 100%;
       height: 100vh;
       overflow: auto;
